@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><buildings>
+    <building>
+        <id>1</id>
+        <built>да</built>
+        <creationDate>2004</creationDate>
+        <title>Hospital For Animals</title>
+        <owner>Joe Biden</owner>
+        <typeBuilding>Hospital</typeBuilding>
+        <adress>st. Torch</adress>
+        <floors>4</floors>
+    </building>
+</buildings>
