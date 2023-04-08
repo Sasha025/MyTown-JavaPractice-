@@ -21,11 +21,7 @@ public class BuildingController {
     @PostMapping
     public Building create(@RequestBody Building building){return buildingService.createBuilding(building);}
     @PutMapping("{id}")
-    public Building update(@PathVariable("id") Building buildingFromFile,
-                           @RequestBody Building building) {
-        BeanUtils.copyProperties(building,buildingFromFile,"id");
-        return buildingService.updateBuilding(buildingFromFile);
-    }
+    public Building update(@RequestBody Building building) {return buildingService.updateBuilding(building);}
    @DeleteMapping("{id}")
-   public void delete(@PathVariable("id") Building building){buildingService.deleteBuilding(building.getId());}
+   public void delete(@PathVariable("id") Long id){buildingService.deleteBuilding(id);}
 }

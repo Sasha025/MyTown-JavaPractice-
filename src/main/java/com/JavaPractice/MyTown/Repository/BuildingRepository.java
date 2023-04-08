@@ -232,7 +232,6 @@ public class BuildingRepository implements IBuildingRepository {
         }
         return buildings;
     }
-
     public Building getBuildingById(Long id) {
         FileInputStream fileInputStream;
         try {
@@ -307,13 +306,13 @@ public class BuildingRepository implements IBuildingRepository {
             Long idField = Long.parseLong((element.getElementsByTagName("id").item(0).getTextContent()));
 
             if (idField.equals(id)) {
-                String builtField = element.getElementsByTagName("built").item(0).getTextContent();
-                int creationDateField = Integer.parseInt(element.getElementsByTagName("creationDate").item(0).getTextContent());
-                String titleField = element.getElementsByTagName("title").item(0).getTextContent();
-                String ownerField = element.getElementsByTagName("owner").item(0).getTextContent();
-                String typeBuildingField = element.getElementsByTagName("typeBuilding").item(0).getTextContent();
-                String addressField = element.getElementsByTagName("address").item(0).getTextContent();
-                int floorsField = Integer.parseInt(element.getElementsByTagName("floors").item(0).getTextContent());
+                element.getElementsByTagName("built").item(0).setTextContent(building.getBuilt());
+                element.getElementsByTagName("creationDate").item(0).setTextContent(String.valueOf(building.getCreationDate()));
+                element.getElementsByTagName("title").item(0).setTextContent(building.getTitle());
+                element.getElementsByTagName("owner").item(0).setTextContent(building.getOwner());
+                element.getElementsByTagName("typeBuilding").item(0).setTextContent(building.getTypeBuilding());
+                element.getElementsByTagName("address").item(0).setTextContent(building.getAddress());
+                element.getElementsByTagName("floors").item(0).setTextContent(String.valueOf(building.getFloors()));
 
                 try {
                     TransformerFactory transformerFactory = TransformerFactory.newInstance();
@@ -330,4 +329,5 @@ public class BuildingRepository implements IBuildingRepository {
         }
         return null;
     }
+
 }
