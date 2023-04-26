@@ -10,6 +10,8 @@ public class Building {
     private String address;
     private int floors;
 
+
+
     public Building(long id, String built, int creationDate, String title, String owner, String typeBuilding, String address, int floors) {
         this.id= id;
         this.built=built;

@@ -1,3 +1,4 @@
+/*
 package com.JavaPractice.MyTown.controller;
 
 import com.JavaPractice.MyTown.model.Building;
@@ -9,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("buildings")
+@RequestMapping("/")
 public class BuildingController {
     private final IBuildingService buildingService;
     @Autowired
@@ -25,3 +26,4 @@ public class BuildingController {
    @DeleteMapping("{id}")
    public void delete(@PathVariable("id") Long id){buildingService.deleteBuilding(id);}
 }
+*/

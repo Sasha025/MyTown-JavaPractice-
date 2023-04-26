@@ -1,2 +1,34 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?><buildings>
-<building><id>2</id><built>no</built><creationDate>204</creationDate><title>tal For Animals</title><owner>JBidn</owner><typeBuilding>rnmental</typeBuilding><address>st. rch</address><floors>8</floors></building><building><id>3</id><built>yes</built><creationDate>2004</creationDate><title>Hospital For Animals</title><owner>Joe Bidon</owner><typeBuilding>Governmental</typeBuilding><address>st. Torch</address><floors>4</floors></building></buildings>
+
+
+    <building>
+        <id>1</id>
+        <built>yes</built>
+        <creationDate>2024</creationDate>
+        <title>tal For Anim323als</title>
+        <owner>JBidn</owner>
+        <typeBuilding>rnmental</typeBuilding>
+        <address>st. rch</address>
+        <floors>8</floors>
+    </building>
+    <building>
+        <id>2</id>
+        <built>yes</built>
+        <creationDate>2024</creationDate>
+        <title>tal For Anim323als</title>
+        <owner>JBidn</owner>
+        <typeBuilding>rnmental</typeBuilding>
+        <address>st. rch</address>
+        <floors>8</floors>
+    </building>
+    <building>
+        <id>3</id>
+        <built>yes</built>
+        <creationDate>2024</creationDate>
+        <title>tal For Anim323als</title>
+        <owner>JBidn</owner>
+        <typeBuilding>rnmental</typeBuilding>
+        <address>st. rch</address>
+        <floors>8</floors>
+    </building>
+<building><id>4</id><built>dsf</built><creationDate>32</creationDate><title>fsdf</title><owner>sdf</owner><typeBuilding>sdf</typeBuilding><address>dsf</address><floors>32</floors></building></buildings>

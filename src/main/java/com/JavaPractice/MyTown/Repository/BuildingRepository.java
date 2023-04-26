@@ -121,7 +121,6 @@ public class BuildingRepository implements IBuildingRepository {
         if (!new File(FILE_NAME).exists()){
             throw new RuntimeException("File not found: " + FILE_NAME);
         }
-
         FileInputStream fileInputStream;
         try{
             fileInputStream = new FileInputStream(FILE_NAME);

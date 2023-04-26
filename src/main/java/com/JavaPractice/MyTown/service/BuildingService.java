@@ -13,9 +13,8 @@ import java.util.List;
 public class BuildingService implements IBuildingService {
     private final IBuildingRepository iBuildingRepository;
     @Autowired
-    public BuildingService(@Qualifier("buildingRepository") IBuildingRepository iBuildingRepository){
-        this.iBuildingRepository = iBuildingRepository;
-    }
+    public BuildingService(@Qualifier("buildingRepository") IBuildingRepository iBuildingRepository){this.iBuildingRepository = iBuildingRepository;}
+
     @Override
     public List<Building> getAllBuildings(){ return iBuildingRepository.getAllBuildings();}
     @Override
@@ -26,7 +25,6 @@ public class BuildingService implements IBuildingService {
     @Override
     public Building updateBuilding(Building building) {return iBuildingRepository.updateBuilding(building);}
     @Override
-    public void deleteBuilding(long id) {
-        iBuildingRepository.deleteBuilding(id);}
+    public void deleteBuilding(long id) {iBuildingRepository.deleteBuilding(id);}
 
 }
