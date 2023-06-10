@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title th:text="${pageTitle}">SQL Query Page</title>
+</head>
+<body>
+<h1>Enter your SQL query:</h1>
+<form action="/execute-query" method="POST">
+    <textarea name="sqlQuery" rows="5" cols="50"></textarea>
+    <br>
+    <input type="submit" value="Execute">
+</form>
+<br>
+<h2>Query Results:</h2>
+<table th:if="${queryResult != null}">
+    <thead>
+    <tr>
+        <th th:each="column : ${columnHeaders}" th:text="${column}"></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="row : ${queryResult.rows}">
+        <td th:each="cell : ${row}" th:text="${cell}"></td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
