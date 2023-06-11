@@ -6,6 +6,7 @@ import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Service;
 
 import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -30,6 +31,18 @@ public class SQLQueryService {
                 row.add(resultSet.getObject(i));
             }
             return row;
+        }
+    }
+    private static class ResultLabelMapper implements RowMapper<List<String>> {
+        @Override
+        public List<String> mapRow(ResultSet resultSet, int rowNum) throws SQLException {
+            int columnCount = resultSet.getMetaData().getColumnCount();
+            ResultSetMetaData meta = resultSet.getMetaData();
+            List<String> columns = new ArrayList<>();
+            for (int i = 1; i <= columnCount; i++) {
+                columns.add(meta.getColumnLabel(i));
+            }
+            return columns;
         }
     }
 }

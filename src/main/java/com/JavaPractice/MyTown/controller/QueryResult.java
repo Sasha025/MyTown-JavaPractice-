@@ -5,6 +5,7 @@ import java.util.List;
 public class QueryResult {
     private List<String> columns;
     private List<List<Object>> rows;
+
     public List<String> getColumns() {
         return columns;
     }

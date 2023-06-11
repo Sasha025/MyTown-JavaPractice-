@@ -12,13 +12,13 @@
 </form>
 <br>
 <h2>Query Results:</h2>
-<table th:if="${queryResult != null}">
+<table>
     <thead>
     <tr>
-        <th th:each="column : ${columnHeaders}" th:text="${column}"></th>
+        <th th:each="column : ${columnHeaders.getColumns()}" th:text="${column}"></th>
     </tr>
     </thead>
-    <tbody>
+    <tbody th:if="${queryResult != null}">
     <tr th:each="row : ${queryResult.rows}">
         <td th:each="cell : ${row}" th:text="${cell}"></td>
     </tr>
