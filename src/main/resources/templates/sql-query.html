@@ -9,20 +9,28 @@
     <textarea name="sqlQuery" rows="5" cols="50"></textarea>
     <br>
     <input type="submit" value="Execute">
+    <br>
+    <script>
+        function updateData() {
+            // Ваш код обновления данных здесь
+            alert("Данные были успешно обновлены.");
+        }
+    </script>
+    <button onclick="updateData()">UPDATE</button>
+    <h2>Query Results:</h2>
+    <table>
+        <thead>
+        <tr>
+            <th th:each="column : ${columnHeaders.getColumns()}" th:text="${column}"></th>
+        </tr>
+        </thead>
+        <tbody th:if="${queryResult != null}">
+        <tr th:each="row : ${queryResult.rows}">
+            <td th:each="cell : ${row}" th:text="${cell}"></td>
+        </tr>
+        </tbody>
+    </table>
+
 </form>
-<br>
-<h2>Query Results:</h2>
-<table>
-    <thead>
-    <tr>
-        <th th:each="column : ${columnHeaders.getColumns()}" th:text="${column}"></th>
-    </tr>
-    </thead>
-    <tbody th:if="${queryResult != null}">
-    <tr th:each="row : ${queryResult.rows}">
-        <td th:each="cell : ${row}" th:text="${cell}"></td>
-    </tr>
-    </tbody>
-</table>
 </body>
 </html>
