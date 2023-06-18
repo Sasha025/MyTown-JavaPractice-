@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Студент</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<h1>Студент</h1>
+<form th:action="@{/student/{id}(id=${student.id})}" method="post">
+    <input type="date" name="date" th:value="${student.date}" required>
+    <input type="text" name="status" placeholder="Статус" th:value="${student.status}" required>
+    <input type="text" name="type" placeholder="Тип обучения" th:value="${student.type}" required>
+    <select name="institute" required>
+        <option selected disabled>Выберите институт</option>
+        <option th:each="institute : ${institutes}" th:value="${institute.id}" th:text="${institute.name}" th:selected="${student.id == student.institute.id}"/>
+    </select>
+    <select name="applicant" required>
+        <option selected disabled>Выберите абитуриента</option>
+        <option th:each="applicant : ${applicants}" th:value="${applicant.id}" th:text="${applicant.name}" th:selected="${student.id == student.applicant.id}"/>
+    </select>
+    <button type="submit">Редактировать</button>
+</form>
+</body>
+</html>

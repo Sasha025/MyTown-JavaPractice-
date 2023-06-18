@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Оценка</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<h1>Оценка</h1>
+<form th:action="@{/score/{id}(id=${score.id})}" method="post">
+    <select name="applicant" required>
+        <option selected disabled>Выберете абитуриента</option>
+        <option th:each="applicant : ${applicants}" th:value="${applicant.id}" th:text="${applicant.name}" th:selected="${score.applicant == applicant}"/>
+    </select>
+    <select name="discipline" required>
+        <option selected disabled>Выберите дисциплину</option>
+        <option th:each="discipline : ${disciplines}" th:value="${discipline.id}" th:text="${discipline.name}" th:selected="${score.discipline == discipline}"/>
+    </select>
+    <input type="date" name="date" th:value="${score.date}" required>
+    <input type="number" name="mark" placeholder="Балл" th:value="${score.mark}"required>
+    <button type="submit">Редактировать</button>
+</form>
+</body>
+</html>

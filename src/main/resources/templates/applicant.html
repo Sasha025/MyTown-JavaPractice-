@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Абитуриенты</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<nav>
+    <ul>
+        <li><a href="/applicant">Абитуриенты</a></li>
+        <li><a href="/discipline">Дисциплины</a></li>
+        <li><a href="/institute">Институты</a></li>
+        <li><a href="/score">Результаты</a></li>
+        <li><a href="/specialty">Специальности</a></li>
+        <li><a href="/student">Студенты</a></li>
+        <li><a href="/sql-query">Запросник</a></li>
+    </ul>
+</nav>
+<h1>Абитуриенты</h1>
+<form th:action="@{/applicant/add}" method="post">
+    <input type="date" name="date" required>
+    <input type="text" name="name" placeholder="Имя" required>
+    <label for="gold_medal">Золотая медаль:</label>
+    <input type="checkbox" name="gold_medal" id="gold_medal">
+    <select name="specialty" required>
+        <option selected disabled>Выберите специальность</option>
+        <option th:each="specialty : ${specialties}" th:value="${specialty.id}" th:text="${specialty.name}" />
+    </select>
+    <button type="submit">Добавить</button>
+</form>
+<table>
+    <thead>
+    <tr>
+        <th>Имя</th>
+        <th>Дата</th>
+        <th>Специальность</th>
+        <th>Золотая медаль</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="applicant : ${applicants}">
+        <td th:text="${applicant.name}"></td>
+        <td th:text="${applicant.date}"></td>
+        <td th:text="${applicant.specialty.name}"></td>
+        <td th:text="${applicant.gold_medal}"></td>
+        <td>
+            <form th:action="@{/applicant/delete/{id}(id=${applicant.id})}" method="post">
+                <button type="submit">Удалить</button>
+            </form>
+        </td>
+        <td>
+            <form th:action="@{'/applicant/' + ${applicant.id}}">
+                <button type="submit">Редактировать</button>
+            </form>
+        </td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Институт</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<h1>Институт</h1>
+<form th:action="@{/institute/{id}(id=${institute.id})}" method="post">
+    <input type="text" name="name" placeholder="Название" th:value="${institute.name}" required>
+    <button type="submit">Редактировать</button>
+</form>
+</body>
+</html>

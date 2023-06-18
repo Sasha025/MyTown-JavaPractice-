@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Дисциплины</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<nav>
+    <ul>
+        <li><a href="/applicant">Абитуриенты</a></li>
+        <li><a href="/discipline">Дисциплины</a></li>
+        <li><a href="/institute">Институты</a></li>
+        <li><a href="/score">Результаты</a></li>
+        <li><a href="/specialty">Специальности</a></li>
+        <li><a href="/student">Студенты</a></li>
+        <li><a href="/sql-query">Запросник</a></li>
+    </ul>
+</nav>
+<h1>Дисциплины</h1>
+<form th:action="@{/discipline/add}" method="post">
+    <input type="text" name="name" placeholder="Название" required>
+    <select name="specialty" required>
+        <option selected disabled>Выберите специальность</option>
+        <option th:each="specialty : ${specialties}" th:value="${specialty.id}" th:text="${specialty.name}" />
+    </select>
+    <button type="submit">Добавить</button>
+</form>
+<table>
+    <thead>
+    <tr>
+        <th>Название</th>
+        <th>Специальность</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="discipline : ${disciplines}">
+        <td th:text="${discipline.name}"></td>
+        <td th:text="${discipline.specialty.name}"></td>
+        <td>
+            <form th:action="@{/discipline/delete/{id}(id=${discipline.id})}" method="post">
+                <button type="submit">Удалить</button>
+            </form>
+        </td>
+        <td>
+            <form th:action="@{'/discipline/' + ${discipline.id}}">
+                <button type="submit">Редактировать</button>
+            </form>
+        </td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+  <title>Абитуриент</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<h1>Абитуриент</h1>
+<form th:action="@{/applicant/{id}(id=${applicant.id})}" method="post">
+  <input type="date" name="date" th:value="${applicant.date}" required>
+  <input type="checkbox" name="gold_medal" id="gold_medal" th:checked="${applicant.gold_medal}">
+  <input type="text" name="name" placeholder="Имя" th:value="${applicant.name}" required>
+  <select name="specialty" required>
+    <option selected disabled>Выберите специальность</option>
+    <option th:each="specialty : ${specialties}" th:value="${specialty.id}" th:text="${specialty.name}" th:selected="${applicant.id == applicant.specialty.id}"/>
+  </select>
+  <button type="submit">Редактировать</button>
+</form>
+</body>
+</html>

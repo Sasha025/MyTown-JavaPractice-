@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Результаты</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<nav>
+    <ul>
+        <li><a href="/applicant">Абитуриенты</a></li>
+        <li><a href="/discipline">Дисциплины</a></li>
+        <li><a href="/institute">Институты</a></li>
+        <li><a href="/score">Результаты</a></li>
+        <li><a href="/specialty">Специальности</a></li>
+        <li><a href="/student">Студенты</a></li>
+        <li><a href="/sql-query">Запросник</a></li>
+    </ul>
+</nav>
+<h1>Результаты</h1>
+<form th:action="@{/score/add}" method="post">
+    <select name="applicant" required>
+        <option selected disabled>Выберете абитуриента</option>
+        <option th:each="applicant : ${applicants}" th:value="${applicant.id}" th:text="${applicant.name}" />
+    </select>
+    <select name="discipline" required>
+        <option selected disabled>Выберите дисциплину</option>
+        <option th:each="discipline : ${disciplines}" th:value="${discipline.id}" th:text="${discipline.name}" />
+    </select>
+    <input type="date" name="date" required>
+    <input type="number" name="mark" placeholder="Балл" required>
+    <button type="submit">Добавить</button>
+</form>
+<table>
+    <thead>
+    <tr>
+        <th>Абитуриент</th>
+        <th>Дисциплина</th>
+        <th>Дата</th>
+        <th>Балл</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="score : ${scores}">
+        <td th:text="${score.applicant.name}"></td>
+        <td th:text="${score.discipline.name}"></td>
+        <td th:text="${score.date}"></td>
+        <td th:text="${score.mark}"></td>
+        <td>
+            <form th:action="@{/score/delete/{id}(id=${score.id})}" method="post">
+                <button type="submit">Удалить</button>
+            </form>
+        </td>
+        <td>
+            <form th:action="@{'/score/' + ${score.id}}">
+                <button type="submit">Редактировать</button>
+            </form>
+        </td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

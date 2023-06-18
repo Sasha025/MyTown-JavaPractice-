@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Специальности</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<nav>
+    <ul>
+        <li><a href="/applicant">Абитуриенты</a></li>
+        <li><a href="/discipline">Дисциплины</a></li>
+        <li><a href="/institute">Институты</a></li>
+        <li><a href="/score">Результаты</a></li>
+        <li><a href="/specialty">Специальности</a></li>
+        <li><a href="/student">Студенты</a></li>
+        <li><a href="/sql-query">Запросник</a></li>
+    </ul>
+</nav>
+<h1>Специальности</h1>
+<form th:action="@{/specialty/add}" method="post">
+    <input type="text" name="name" placeholder="Название" required>
+    <input type="number" name="places" placeholder="Места" required>
+    <select name="institute" required>
+        <option selected disabled>Выберите институт</option>
+        <option th:each="institute : ${institutes}" th:value="${institute.id}" th:text="${institute.name}" />
+    </select>
+    <button type="submit">Добавить</button>
+</form>
+<table>
+    <thead>
+    <tr>
+        <th>Название</th>
+        <th>Места</th>
+        <th>Институт</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="specialty : ${specialties}">
+        <td th:text="${specialty.name}"></td>
+        <td th:text="${specialty.places}"></td>
+        <td th:text="${specialty.institute.name}"></td>
+        <td>
+            <form th:action="@{/specialty/delete/{id}(id=${specialty.id})}" method="post">
+                <button type="submit">Удалить</button>
+            </form>
+        </td>
+        <td>
+            <form th:action="@{'/specialty/' + ${specialty.id}}">
+                <button type="submit">Редактировать</button>
+            </form>
+        </td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
